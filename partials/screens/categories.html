@@ -1,0 +1,107 @@
+<template>
+	<div class="page">
+
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="left">
+					<a href="/home" class="link">
+						<i class="icon icon-back"></i>
+						<span class="ios-only" data-i18n="back">Back</span>
+					</a>
+				</div>
+				<div class="title md-only" >Categories</div>
+				
+				
+			</div>
+		</div>
+
+		<div class="page-content">
+
+				<div class="block">
+				<div class="row">
+					<div class="col">
+		
+					
+						<div class="row">
+							<div class="col-100">
+							Explore our Pharmacy: <span class="text-color-red" style="font-size:14px;font-weight:bold;"><i class="fas fa-search"></i> Search Now</span>
+							
+							</div>	
+							
+							
+						</div>
+						<hr>
+						 <div class="row" >
+				{{#if categories}}
+				{{#each categories}}
+				<div class="col-33" @click="category_products('{{this.id}}','{{this.name}}')">
+				<div class="category_card_2">
+						
+						<a href="#"  @click="category_products('{{this.id}}','{{this.name}}')" class="text-color-black">
+							<div class="card-content card-content-padding">
+								<div align="center"><img src="{{this.image}}" style="width:80%;"></div>
+								<span>{{this.name}}</span>
+							</div>
+						</a>
+						
+					</div>
+					</div>
+					{{/each}}
+						{{/if}}
+				
+				
+				</div>
+			</div>	
+			</div>
+		</div>
+		
+		</div>
+
+		
+
+		
+	</div>
+</template>
+
+<script>
+	return {
+		data: function() {
+			return {
+				categories: null
+			}
+		},
+		methods: {
+			loadCategoryData: function() {
+				var self = this;
+				app.request.json(
+					main_url+'data/categories.php',
+					function(data) {
+						if (data) {
+							self.$setState({
+								categories: data
+							});
+						}
+					}
+				);
+			},
+			category_products: function(id,name) {
+				var self = this;
+				console.log('Category Selected: '+id);
+				
+				localStorage.setItem("selected_category_id",id);
+				localStorage.setItem("selected_category_name",name);
+				app.views.current.router.navigate('/category-products');
+			
+			},
+			},
+		
+			
+		on: {
+			pageInit: function() {
+				var self = this;
+				self.loadCategoryData();
+			}
+		}
+	}
+	
+</script>

@@ -1,0 +1,95 @@
+<template>
+	<div class="page">
+
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="left">
+					<a href="/home" class="link">
+						<i class="icon icon-back"></i>
+						<span class="ios-only" data-i18n="back">Back</span>
+					</a>
+				</div>
+				<div class="title md-only" data-i18n="Info">Info</div>
+				<div class="right">
+					<a href="/cart" class="link icon-only" >
+						<i class="icon f7-icons">bag<span class=" cart_count">0</span></i>
+					</a>
+					
+				</div>
+				<div class="subnavbar ios-only">
+					<div class="subnavbar-inner">
+						<div class="title" data-i18n="Info">Info</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="page-content">
+		<div class="block-title">Information to enable you to shop better with us.</div>
+			<div id="info_load">
+			</div>
+			
+
+
+			
+
+		</div>
+
+	</div>
+</template>
+
+<style scoped>
+	
+	.app-logo {
+		height: 128px;
+		width: auto;
+	}
+
+	.app-title {
+		font-size: 17px;
+	}
+
+	.app-tagline {
+		font-size: 14px;
+	}
+
+	.app-version {
+		font-size: 12px;
+	}
+
+	.app-developer {
+		font-size: 11px;
+	}
+
+	.fa-coffee {
+		color: #964B00;
+	}
+
+	.fa-heart {
+		color: #FA5252;
+	}
+</style>
+
+<script>
+	return {
+		data: function() {
+			
+		return {
+			contacts: null,
+			nextShop: '/shop'
+			}
+		},
+		methods: {
+		
+			
+			},
+		on: {
+			pageInit: function() {
+				var self = this;
+					//info_load();
+					set_last_page('/info');
+					 check_home_login();
+			}
+		}
+	}
+</script>

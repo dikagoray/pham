@@ -1,0 +1,334 @@
+<template>
+	<div class="page">
+
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="left">
+					<a href="#" class="link back">
+						<i class="icon icon-back"></i>
+						<span class="ios-only" data-i18n="back">Back</span>
+					</a>
+				</div>
+				<div class="title md-only" data-i18n="contact-us">Contact Us</div>
+				<div class="right ios-only">
+					<a href="#" class="link icon-only" @click="openPopup">
+						<i class="icon f7-icons">compose</i>
+					</a>
+				</div>
+				<div class="subnavbar ios-only">
+					<div class="subnavbar-inner">
+						<div class="title" data-i18n="contact-us">Contact Us</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="page-content">
+
+			
+			{{#each branch}}
+			<div class="embed">
+				<iframe class="embed-content" frameborder="0" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtiPGi_U05PWnEaFdu6SY62pxz57kBNvw&q={{this.latitude}},{{this.longitude}}"></iframe>
+			</div>
+
+			<div class="list no-hairlines no-hairlines-between margin-vertical">
+				<ul>
+					<li>
+						<div class="item-content">
+							<div class="item-media">
+								<i class="fa-stack">
+									<span class="fas fa-square fa-stack-2x text-color-blue ios-only"></span>
+									<span class="fas fa-circle fa-stack-2x text-color-blue md-only"></span>
+									<span class="fas fa-info fa-stack-1x fa-inverse"></span>
+								</i>
+							</div>
+							<div class="item-inner">
+								<div class="item-title">{{this.name}}</div>
+							</div>
+						</div>
+					</li>
+					
+				
+					<li>
+						<div class="item-content">
+							<div class="item-media">
+								<i class="fa-stack">
+									<span class="fas fa-square fa-stack-2x text-color-green ios-only"></span>
+									<span class="fas fa-circle fa-stack-2x text-color-green md-only"></span>
+									<span class="fas fa-map-marker-alt fa-stack-1x fa-inverse"></span>
+								</i>
+							</div>
+							<div class="item-inner">
+								<div class="item-title">{{this.address}}</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="item-content">
+							<div class="item-media">
+								<i class="fa-stack">
+									<span class="fas fa-square fa-stack-2x text-color-black ios-only"></span>
+									<span class="fas fa-circle fa-stack-2x text-color-black md-only"></span>
+									<span class="fas fa-phone fa-stack-1x fa-inverse"></span>
+								</i>
+							</div>
+							<div class="item-inner">
+								<div class="item-title">{{this.phone}}</div>
+								<div class="item-after">
+									<a href="tel:{{this.phone}}" target="_blank" class="external">Call</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="item-content">
+							<div class="item-media">
+								<i class="fa-stack">
+									<span class="fas fa-square fa-stack-2x text-color-green ios-only"></span>
+									<span class="fas fa-circle fa-stack-2x text-color-green md-only"></span>
+									<span class="fa fa-whatsapp fa-stack-1x fa-inverse"></span>
+								</i>
+							</div>
+							<div class="item-inner">
+								<div class="item-title">{{this.whatsapp}}</div>
+								<div class="item-after">
+									<a href="https://wa.me/+{{this.whatsapp}}" target="_blank" class="external">Send Whatsapp</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="item-content">
+						
+							<div class="item-inner">
+								<div class="item-title">
+									<a href="{{this.facebook}}" target="_blank" class="external">
+										<i class="fa-stack">
+											<span class="fas fa-square fa-stack-2x brand-color-facebook ios-only"></span>
+											<span class="fas fa-circle fa-stack-2x brand-color-facebook md-only"></span>
+											<span class="fab fa-facebook-f fa-stack-1x fa-inverse"></span>
+										</i>
+									</a>
+									
+
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		
+
+			{{/each}}
+
+		</div>
+
+		<div class="fab fab-right-bottom md-only">
+			<a href="#" @click="openPopup">
+				<i class="icon material-icons">message</i>
+			</a>
+		</div>
+
+		<div class="popup popup-tablet-fullscreen popup-contact">
+			<div class="view">
+				<div class="page">
+
+					<div class="navbar">
+						<div class="navbar-inner">
+							<div class="left ios-only">
+								<a href="#" class="link popup-close" data-popup=".popup-contact">
+									<span data-i18n="cancel">Cancel</span>
+								</a>
+							</div>
+							<div class="title">Write Us</div>
+							<div class="right ios-only">
+								<button type="submit" class="button link" form="contact" data-i18n="send">Send</button>
+							</div>
+							<div class="right md-only">
+								<a href="#" class="link icon-only popup-close" data-popup=".popup-contact">
+									<i class="icon material-icons">close</i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="page-content">
+
+						<div class="block text-align-center">Feel free to drop us a message.</div>
+
+						<form id="contact" name="contact" action="#" method="POST" enctype="multipart/form-data">
+							<div class="list no-hairlines no-hairlines-between">
+								<ul>
+									<li>
+										<div class="item-content item-input item-input-with-info">
+											<div class="item-media">
+												<i class="icon f7-icons ios-only">person</i>
+												<i class="icon material-icons md-only">person</i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title item-floating-label">Name</div>
+												<div class="item-input-wrap">
+													<input type="text" name="name" required />
+													<div class="item-input-info input-error-message"></div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="item-content item-input item-input-with-info">
+											<div class="item-media">
+												<i class="icon f7-icons ios-only">email</i>
+												<i class="icon material-icons md-only">email</i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title item-floating-label">Email</div>
+												<div class="item-input-wrap">
+													<input type="email" name="email" required />
+													<div class="item-input-info input-error-message"></div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="item-content item-input item-input-with-info">
+											<div class="item-media">
+												<i class="icon f7-icons ios-only">info_round</i>
+												<i class="icon material-icons md-only">info</i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title item-floating-label">Subject</div>
+												<div class="item-input-wrap">
+													<input type="text" name="subject" required />
+													<div class="item-input-info input-error-message"></div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="item-content item-input item-input-with-info">
+											<div class="item-media">
+												<i class="icon f7-icons ios-only">message</i>
+												<i class="icon material-icons md-only">message</i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title item-floating-label">Message</div>
+												<div class="item-input-wrap">
+													<textarea name="message" class="resizable" required></textarea>
+													<div class="item-input-info input-error-message"></div>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="block md-only">
+								<button type="submit" class="button button-big button-fill" data-i18n="send">Send</button>
+							</div>
+						</form>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</template>
+
+<script>
+	return {
+		data: function() {
+			return {
+				formValidator: null,
+				branch: null
+			}
+		},
+		methods: {
+			loadData: function() {
+				var self = this;
+				var branch_id=localStorage.getItem('selected_branch_id');
+				app.request.json(
+				main_url+'data/branch.php?id='+branch_id,
+					function(data) {
+						if (data) {
+							self.$setState({
+								branch: data
+							});
+						}
+						
+					}
+				);
+			},
+			openPopup: function() {
+				var self = this;
+				var popup = app.popup.create({
+					el: '.popup-contact',
+					on: {
+						opened: function() {
+							self.initializeFormValidator();
+						},
+						closed: function() {
+							self.formValidator.destroy();
+							document.querySelector('form[name=contact]').reset();
+						}
+					}
+				});
+				popup.open();
+			},
+			initializeFormValidator: function() {
+				var self = this;
+				self.formValidator = jQuery('form[name=contact]').validate({
+					ignore: [],
+					rules: {
+						name: {
+							required: true
+						},
+						email: {
+							required: true,
+							email: true
+						},
+						subject: {
+							required: true
+						},
+						message: {
+							required: true
+						}
+					},
+    			messages: {
+						name: {
+							required: 'Please enter name.'
+      			},
+						email: {
+							required: 'Please enter email address.',
+							email: 'Please enter a valid email address.'
+						},
+						subject: {
+							required: 'Please enter subject.'
+      			},
+						message: {
+							required: 'Please enter message.'
+						}
+					},
+					submitHandler: function(form) {
+						self.submitForm(form);
+					}
+				});
+			},
+			submitForm: function(form) {
+				var self = this;
+				app.toast.show({
+					text: 'Thank you for writing us. We will get back to you soon.',
+					position: 'bottom',
+					cssClass: 'toast-round bg-color-green'
+				});
+				app.popup.close('.popup-contact', false);
+			}
+		},
+		on: {
+			pageInit: function() {
+				var self = this;
+				self.loadData();
+			}
+		}
+	}
+</script>

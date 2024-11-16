@@ -1,0 +1,78 @@
+<template>
+	<div class="page">
+
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="left">
+					<a href="#" class="link back">
+						<i class="icon icon-back"></i>
+						<span class="ios-only" data-i18n="back">Back</span>
+					</a>
+				</div>
+				<div class="title md-only" data-i18n="cart">Cart</div>
+				<div class="subnavbar ios-only">
+					<div class="subnavbar-inner">
+						<div class="title" data-i18n="cart">Cart</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="page-content">
+
+			<div class="card">
+				<div class="card-content card-content-padding">
+					<div class="list media-list no-hairlines no-hairlines-between">
+						
+						<ul class="loadProducts_cart_status">
+						
+						
+						
+						</ul>
+						
+				
+					</div>
+				</div>
+			</div>
+			
+			<div class="card">
+				<div class="card-content card-content-padding getTotal_status" >
+				
+						
+					
+				</div>
+			
+			</div>
+
+		</div>
+
+	</div>
+</template>
+<style scoped>
+	.simple-list li .item-cell:first-child {
+		min-width: 64px;
+	}
+	
+</style>
+
+<script>
+	return {
+		data: function() {
+			return {
+			}
+		},
+		methods: {
+			
+			
+		},
+		on: {
+			pageInit: function() {
+				var self = this;
+				set_last_page('/cart');
+				 check_home_login();
+				 loadProducts_cart();
+				
+			}
+		}
+	}
+</script>

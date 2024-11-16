@@ -1,0 +1,360 @@
+<template>
+	<div class="page">
+
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="left">
+					<a href="/home" class="link ">
+						<i class="icon icon-back"></i>
+						<span class="ios-only" data-i18n="back">Back</span>
+					</a>
+				</div>
+				<div class="title md-only" data-i18n="user-profile">User Profile</div>
+				<div class="subnavbar ios-only">
+					<div class="subnavbar-inner">
+						<div class="title" data-i18n="user-profile">User Profile</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="page-content">
+
+			<div class="profile-header">
+				<a href="/avatar"><img class="user-avatar" style="width:130px;height:130px;" src="assets/custom/img/default.jpg" alt="" /></a>
+				<div class="user-name user"></div>
+			
+			<div class="user-actions row " align="center">
+					<a class="col button button-fill button-small color-red" style="width:50%;" onclick="sign_out()" href="javascript:;">Sign out</a>
+					<a class="col button button-fill button-small color-green popup-open" data-popup=".profile-data">Edit Details </a>
+				</div>
+			</div>
+
+			<div class="card">
+						<div class="card-content card-content-padding user-bio">
+							
+						</div>
+					</div>
+
+			<div class="card">
+						<div class="card-content card-content-padding">
+							<div class="list no-hairlines no-hairlines-between">
+								<ul>
+									<li>
+										<div class="item-content">
+											<div class="item-media">
+												<i class="fa-stack">
+													<span class="fas fa-square fa-stack-2x text-color-blue ios-only"></span>
+													<span class="fas fa-circle fa-stack-2x text-color-blue md-only"></span>
+													<span class="fas fa-user fa-stack-1x fa-inverse"></span>
+												</i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title user"></div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="item-content">
+											<div class="item-media">
+												<i class="fa-stack">
+													<span class="fas fa-square fa-stack-2x text-color-pink ios-only"></span>
+													<span class="fas fa-circle fa-stack-2x text-color-pink md-only"></span>
+													<span class="fas fa-birthday-cake fa-stack-1x fa-inverse"></span>
+												</i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title user-birthday"></div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="item-content">
+											<div class="item-media">
+												<i class="fa-stack">
+													<span class="fas fa-square fa-stack-2x text-color-green ios-only"></span>
+													<span class="fas fa-circle fa-stack-2x text-color-green md-only"></span>
+													<span class="fas fa-map-marker-alt fa-stack-1x fa-inverse"></span>
+												</i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title user-location"></div>
+											</div>
+										</div>
+									</li>
+									<li>
+										
+											<div class="item-content">
+												<div class="item-media">
+													<i class="fa-stack">
+														<span class="fas fa-square fa-stack-2x text-color-orange ios-only"></span>
+														<span class="fas fa-circle fa-stack-2x text-color-orange md-only"></span>
+														<span class="fas fa-phone fa-stack-1x fa-inverse"></span>
+													</i>
+												</div>
+												<div class="item-inner">
+													<div class="item-title user-mobile"></div>
+												</div>
+											</div>
+										
+									</li>
+									<li>
+									
+											<div class="item-content">
+												<div class="item-media">
+													<i class="fa-stack">
+														<span class="fas fa-square fa-stack-2x text-color-red ios-only"></span>
+														<span class="fas fa-circle fa-stack-2x text-color-red md-only"></span>
+														<span class="fas fa-envelope fa-stack-1x fa-inverse"></span>
+													</i>
+												</div>
+												<div class="item-inner">
+													<div class="item-title user-email"></div>
+												</div>
+											</div>
+										
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+		</div>
+		
+		
+		
+		<div class="popup popup-tablet-fullscreen profile-data">
+			<div class="view">
+				<div class="page">
+
+					<div class="navbar">
+						<div class="navbar-inner">
+							<div class="left ios-only">
+								<a href="#" class="link popup-close">
+									<span data-i18n="close">Close</span>
+								</a>
+							</div>
+							<div class="title">Edit/Save Profile</div>
+							<div class="right md-only">
+								<a href="#" class="link icon-only popup-close">
+									<i class="icon material-icons md-only">close</i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="page-content">
+
+						<div class="block">
+						<form name="signup" action="#" method="POST" enctype="multipart/form-data">
+				<div class="list no-hairlines no-hairlines-between no-margin-bottom">
+					<ul>
+						<li>
+							<div class="item-content item-input item-input-with-info">
+							
+								<div class="item-inner">
+								<div class="item-title item-label" style="color:#999;">Name*</div>
+									<div class="item-input-wrap">
+										<input type="text" name="name"  id="profile_name" required />
+										<div class="item-input-info input-error-message"></div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>	
+							<div class="item-content item-input item-input-with-info ">
+							
+								<div class="item-inner">
+								  <div class="item-title item-label" style="color:#999;">Phone no.*</div>
+									<div class="item-input-wrap">
+										<input type="tel" name="mobile"  id="profile_mobile" required />
+										<div class="item-input-info input-error-message"></div>
+									</div>
+								</div>
+							</div>
+						</li>
+						
+						<li>
+							<div class="item-content item-input item-input-with-info">
+								
+								<div class="item-inner">
+								 <div class="item-title item-label" style="color:#999;">Date of Birth</div>
+									<div class="item-input-wrap">
+										<input type="date" name="birthday" id="profile_birthday" required />
+										<div class="item-input-info input-error-message"></div>
+									</div>
+								</div>
+							</div>
+						</li>
+						
+						<li>
+							<div class="item-content item-input item-input-with-info">
+								
+								<div class="item-inner">
+								 <div class="item-title item-label" style="color:#999;">Physical Address</div>
+									<div class="item-input-wrap">
+										<input type="text" name="location" id="profile_location" required />
+										<div class="item-input-info input-error-message"></div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content item-input item-input-with-info">
+								
+								<div class="item-inner">
+								 <div class="item-title item-label" style="color:#999;">Tell us about you</div>
+									 <div class="item-input-wrap">
+									<textarea class="resizable" name="bio_summary" id="profile_bio_summary" required></textarea>
+								  </div>
+								</div>
+							</div>
+						</li>
+						
+					</ul>
+					<div class="block text-align-center">
+					<a class="button button-big button-fill" href="javascript:;" @click="submitForm">Save Changes</a>
+						
+					
+					</div>
+				</div>
+			</form>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</template>
+
+<style scoped>
+	.profile-header {
+		align-items: stretch;
+		background-image: linear-gradient(-20deg, var(--oc-color-gray-7) 0%, var(--oc-color-gray-9) 100%);
+		box-sizing: border-box;
+		color: #FFFFFF;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 32px 16px;
+		text-align: center;
+		width: 100%;
+	}
+
+	.profile-header .user-avatar {
+		border: 4px solid #FFFFFF;
+		border-radius: 50%;
+		height: 96px;
+		margin: 0 auto;
+		width: 96px;
+	}
+
+	.profile-header .user-name {
+		font-size: 28px;
+		letter-spacing: 0.5px;
+		margin-top: 16px;
+	}
+
+	.profile-header .user-actions {
+		margin-top: 16px;
+	}
+
+	.image-gallery {
+		margin: 8px;
+		justify-content: center;
+	}
+
+	.image-gallery figure {
+		background: #F5F5F5;
+		margin: 8px;
+		padding: 8px;
+	}
+
+	.theme-dark {{this}} .image-gallery figure {
+		background: #292929;
+	}
+
+	.image-gallery figcaption {
+		margin-top: 6px;
+		text-align: center;
+	}
+</style>
+
+<script>
+	return {
+		methods: {
+					submitForm: function() {
+				
+				
+				var self = this;
+			var name=$('#profile_name').val();
+			 var user_email=localStorage.user_phamarcy_session;
+			var mobile=$('#profile_mobile').val();
+			var location=$('#profile_location').val();
+			var birthday=$('#profile_birthday').val();
+			var bio_summary=$('#profile_bio_summary').val();
+			
+			
+			var url=main_url+"create/update_profile.php";
+			var dataString="name="+name+
+			"&email="+user_email+
+			"&mobile="+mobile+
+			"&location="+location+
+			"&birthday="+birthday+
+			"&bio_summary="+bio_summary+
+			"&signup=?";
+				$.ajax({
+					type: "POST",
+					url: url,
+					data: dataString,
+					crossDomain: true,
+					cache: false,
+					beforeSend: function(){ app.preloader.show();},
+					success: function(data){
+					app.preloader.hide();
+					  if(data==1){
+					app.toast.show({
+					text: 'Changes saved',
+					position: 'bottom',
+					cssClass: 'bg-color-green'
+						});
+					showUser_profile();
+					showUser();
+					  } else if(data==2){
+					  	app.toast.show({
+		text: 'External error',
+		position: 'bottom',
+		cssClass: 'bg-color-red'
+	});
+					  } 
+					   else {
+					 	app.toast.show({
+		text: data,
+		position: 'bottom',
+		cssClass: 'bg-color-red'
+	});
+					  }
+					}
+				});
+				
+			
+				
+				
+				
+				
+			}
+		},
+		on: {
+			pageInit: function() {
+				var self = this;
+				set_last_page('/profile');
+				check_home_login();
+				showUser_profile();
+			}
+		}
+	}
+</script>

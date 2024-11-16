@@ -1,0 +1,563 @@
+<template>
+	<div class="page no-swipeback">
+
+		<div class="navbar">
+			<div class="navbar-inner">
+				{{#js_if "app.data.config.theme.navigation == 'hamburger'"}}
+				<div class="left">
+					<a href="#" class="link icon-only panel-open" data-panel="left">
+						<i class="hamburger hamburger--boring">
+							<span class="hamburger-box">
+								<span class="hamburger-inner"></span>
+							</span>
+						</i>
+					</a>
+				</div>
+				{{/js_if}}
+				<div class="title home_title">
+				Home
+				</div>
+				<div class="right">
+					<a href="#" class="link icon-only" @click="openBranchSelector">
+						<i class="icon material-icons">language</i>
+					</a>
+					<a href="/cart" class="link icon-only" >
+						<i class="icon f7-icons">bag<span class=" cart_count"></span></i>
+					</a>
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="page-content " >
+
+			<div class="slider-hero" >
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+
+						<div class="swiper-slide">
+							<div class="slide-content" style="background-image: url('img/slide1.jpg');
+							background-repeat: no-repeat;
+							background-size: cover;">
+								<div class="slide-media">
+								
+								</div>
+								
+							</div>
+						</div>	
+						<div class="swiper-slide">
+							<div class="slide-content" style="background-image: url('img/slide2.jpg');
+							background-repeat: no-repeat;
+							background-size: cover;">
+								<div class="slide-media">
+								
+								</div>
+								
+							</div>
+						</div>
+
+					<div class="swiper-slide">
+							<div class="slide-content" style="background-image: url('img/slide3.png');
+							background-repeat: no-repeat;
+							background-size: cover;">
+								<div class="slide-media">
+								
+								</div>
+								
+							</div>
+						</div>
+
+					
+
+					</div>
+				</div>
+			</div>
+			<div class="block block-vitals" style="margin-top:20px;">
+				<div class="row">
+					<div class="col ">
+						
+								<div class="card card-vitals-2 " >
+								<div class="card-content-2 card-content-padding">
+								
+								<div class="row ">
+								<div class="col ">
+									<img src="img/cod-1-om.svg" style="width:43px;">
+									</div>
+									<div class="col ">
+									<span>Cash on Delivery</span>
+									</div>
+									</div>
+									
+									
+								
+							</div>
+							</div>
+						
+					</div>
+					<div class="col ">
+						
+								<div class="card card-vitals-2 " >
+								<div class="card-content-2 card-content-padding">
+								<div class="row ">
+								<div class="col ">
+									<img src="img/easy-returns-om.svg" style="width:45px;">
+									</div>
+									<div class="col ">
+									<span>Easy Returns</span>
+									</div>
+									</div>
+								
+							</div>
+							</div>
+						
+					</div>
+				
+				
+					
+				</div>
+				
+			<br>
+				<div class="row">
+					<div class="col">
+						<div class="card card-vitals " >
+							<a id="whatsapp_link" target="_blank" href="#" class="external text-color-black">
+							<div class="card-content card-content-padding">
+								<i class="fa fa-whatsapp text-color-green"></i>
+								<span>Whatsapp</span>
+							</div>
+							</a>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card card-vitals" >
+						<a id="phone_link" target="_blank" href="#" class="external text-color-black">
+							<div class="card-content card-content-padding">
+								<i class="fa fa-phone text-color-blue"></i>
+								<span>Call us </span>
+							</div>
+						</a>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card card-vitals" >
+						<a href="#" class="text-color-black" @click="openBranchSelector">
+							<div class="card-content card-content-padding">
+								<i class="fa fa-hospital text-color-green"></i>
+								<span>Phamarcies</span>
+							</div>
+						</a>
+						</div>
+					</div>
+					
+				</div>
+					<br>
+		<div class="card card-vitals-2 " >
+								<div class="card-content-2 card-content-padding">
+								
+								<div class="row ">
+								<div class="col-20 ">
+									<img src="img/uses.svg" style="width:100%;">
+									</div>
+									<div class="col-80 ">
+									<span style="font-size:14px;font-weight:bold;">New Product Launches</span>
+									<span>New wellness range just for you!</span> <a class="link" href="/products">View all medicine</a>
+									</div>
+									</div>
+									
+									
+								
+							</div>
+						
+		
+		</div>
+			<br>
+				<div class="row">
+					<div class="col">
+				<div class="card card-vitals " >
+					<div class="card-content card-content-padding">
+					
+							<div align="left">Shop by Category <a class="link" href="/categories">View all</a></div>
+							
+						
+						 <div style="width:100%;overflow-x: auto; 
+                overflow-y: hidden; 
+                white-space: nowrap; 
+				flex:1;
+				padding-top:10px;padding-bottom:3px;" >
+				{{#if categories}}
+				{{#each categories}}
+				<div class="category_card" >
+						
+						<a href="javascript:;" class="text-color-black" @click="category_products('{{this.id}}','{{this.name}}')">
+							<div class="card-content card-content-padding">
+								<img src="{{this.image}}" style="width:80%;">
+								<span>{{this.name}}</span>
+							</div>
+						</a>
+						
+					</div>
+					{{/each}}
+						{{/if}}
+				
+					
+					
+					
+					
+				
+				
+				</div>
+					</div>
+				</div>
+			</div>	
+			</div>
+			</div>	
+
+		
+		</div>
+
+
+
+
+
+
+
+
+
+<div class="popup  branches-modal">
+			<div class="view">
+				<div class="page">
+
+					<div class="navbar">
+						<div class="navbar-inner">
+							<div class="left ios-only">
+								<a href="#" class="link popup-close">
+									<span data-i18n="close">Close</span>
+								</a>
+							</div>
+							<div class="title " >Select Phamarcy to shop from </div>
+							<div class="right md-only">
+								<a href="#" class="link icon-only popup-close">
+									<i class="icon material-icons md-only">close</i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="page-content">
+						
+						
+						<div class="block ">
+													{{#each branches}}
+													<label class="chip-selectable">
+													{{#js_if "config.app.branch_id == this.id"}}
+											<input type="radio" name="branches" id="branch_{{this.id}}"  checked />
+										{{else}}
+											<input type="radio" name="branches" id="branch_{{this.id}}"  />
+												{{/js_if}}
+														<div class="chip chip-outline" @click="select_branch('{{this.id}}','{{this.name}}','{{this.whatsapp}}','{{this.phone}}')" style="width:100%;">
+														<div class="chip-media" >
+															<img src="{{this.logo}}" alt="" />
+														</div>
+															<div class="chip-label">{{this.name}}</div>
+														</div>
+														</label>
+													
+													{{/each}}
+												</div>
+						
+						
+			
+					
+						
+						
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+	</div>
+</template>
+
+<style scoped>
+	.slider-hero .swiper-container {
+		
+		height: 20vh;
+	}
+
+	.slider-hero .swiper-slide {
+		width: 100%;
+	}
+
+	.slider-hero .slide-content {
+		
+		height: 100%;
+		
+		
+		width: 100%;
+	}
+
+	.slider-hero .slide-media {
+		height: 45px;
+	}
+
+	
+	
+	.card-stats {
+		border: none;
+		box-shadow: none;
+		color: #FFFFFF;
+		margin: 0;
+	}
+
+	.card-stats .card-content {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.card-stats-icon i {
+		width: 2em;
+	}
+
+	.card-stats-icon .fa-circle {
+		color: rgba(0, 0, 0, 0.25);
+	}
+
+	.card-stats-info {
+		text-align: right;
+	}
+
+	html[dir=rtl] {{this}} .card-stats-info {
+		text-align: left;
+	}
+
+	.card-stats-label {
+		font-size: 15px;
+	}
+
+	.card-stats-value {
+		font-size: 32px;
+		font-weight: bold;
+		line-height: 1;
+	}
+
+	.card-stats-value .progressbar {
+		height: 8px;
+		margin-top: 8px;
+		width: 144px;
+	}
+
+	.card-vitals {
+		border-radius:11px;
+		margin: 0;
+		
+box-shadow: 2px 1px 32px -15px rgba(0,0,0,0.55);
+-webkit-box-shadow: 2px 1px 32px -15px rgba(0,0,0,0.55);
+-moz-box-shadow: 2px 1px 32px -15px rgba(0,0,0,0.55);
+	}
+
+	.card-vitals .card-content {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.card-vitals i {
+		font-size: 38px;
+	}
+
+	.card-vitals span {
+		font-size: 13px;
+	}
+	
+	.card-vitals-2 {
+		border-radius:11px;
+		margin: 0;
+		
+		  background: linear-gradient(141.04deg,#e2bb72 4.52%,rgba(193,148,63,0) 44.97%),linear-gradient(147.72deg,rgba(250,250,250,0.8) 99.53%,#e2bb72 99.4%);
+box-shadow: 2px 1px 32px -15px rgba(0,0,0,0.55);
+-webkit-box-shadow: 2px 1px 32px -15px rgba(0,0,0,0.55);
+-moz-box-shadow: 2px 1px 32px -15px rgba(0,0,0,0.55);
+	}
+
+	.card-vitals-2 .card-content-2 {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.card-vitals-2 i {
+		font-size: 38px;
+	}
+
+	.card-vitals-2 span {
+		font-size: 13px;
+	}
+</style>
+
+<script>
+	return {
+		data: function() {
+			return {
+				sliderHero: null,
+				branches: null,
+				categories: null
+			}
+		},
+		methods: {
+			showToolbar: function() {
+				var self = this;
+				setTimeout(function() {
+					self.$('.toolbar').removeClass('toolbar-hidden');
+				});
+			},
+			initializeSliderHero: function() {
+				var self = this;
+				self.sliderHero = app.swiper.create('.slider-hero .swiper-container', {
+					autoplay: {
+						delay: 3000,
+						disableOnInteraction: false
+					},
+					centeredSlides: true,
+					effect: 'coverflow',
+					coverflowEffect: {
+						rotate: 50,
+						stretch: 0,
+						depth: 100,
+						modifier: 1,
+						slideShadows : true
+					},
+					grabCursor: true,
+					loop: true,
+					slidesPerView: 'auto'
+				});
+			},
+			loadCategoryData: function() {
+				var self = this;
+				app.request.json(
+					main_url+'data/categories-home.php',
+					function(data) {
+						if (data) {
+							self.$setState({
+								categories: data
+							});
+						}
+					}
+				);
+			},
+			loadBranches: function() {
+				var self = this;
+				app.request.json(
+					main_url+'data/branches.php',
+					function(data) {
+						if (data) {
+							self.$setState({
+								branches: data
+							});
+						}
+					}
+				);
+				
+					var branch_id=localStorage.getItem('selected_branch_id');
+				var branch_name=localStorage.getItem('selected_branch_name');
+				var whatsapp_link=localStorage.getItem('selected_branch_whatsapp');
+				var phone_link=localStorage.getItem('selected_branch_phone');
+				if((branch_id=='')||(branch_name=='')){
+					var popup = app.popup.create({
+								el: '.branches-modal'
+							});
+							popup.open();
+				} else {
+					$('.home_title').html(branch_name);
+				$('#branch_'+branch_id).attr("checked", true);
+				$("#whatsapp_link").prop("href", "https://wa.me/+"+whatsapp_link+"");
+				$("#phone_link").prop("href", "tel:+"+phone_link+"");
+			
+				}
+				
+			},
+			select_branch: function(id,name,whatsapp,phone) {
+				var self = this;
+					localStorage.setItem('selected_branch_id',id);
+					localStorage.setItem("selected_branch_name",name);
+					localStorage.setItem('selected_branch_whatsapp',whatsapp);
+					localStorage.setItem("selected_branch_phone",phone);
+									app.toast.show({
+								text: 'Branch Selected',
+								position: 'bottom',
+								cssClass: 'bg-color-green'
+								});
+									$('.home_title').html(name);
+									
+				
+				$("#whatsapp_link").prop("href", "https://wa.me/+"+whatsapp+"");
+				$("#phone_link").prop("href", "tel:+"+phone+"");
+				
+			},
+			category_products: function(id,name) {
+				var self = this;
+				console.log('Category Selected: '+id);
+				
+				localStorage.setItem("selected_category_id",id);
+				localStorage.setItem("selected_category_name",name);
+				app.views.current.router.navigate('/category-products');
+			
+			},
+			
+			openBranchSelector: function() {
+				var self = this;
+				var popup = app.popup.create({
+								el: '.branches-modal'
+							});
+							popup.open();
+				
+				
+			},
+				showNotification: function() {
+				var self = this;
+				
+				var user_id=localStorage.user_phamarcy_id;
+					
+				var xhr = $.get( main_url+"data/notification.php?user_id="+user_id, function(data) {
+				
+				if(data==0){
+				
+				} else {
+				var notification = app.notification.create({
+					titleRightText: 'Now',
+					subtitle: 'Notification',
+					text: data
+				});
+				notification.open();
+				}
+				
+				});
+			},
+		},
+		on: {
+			pageInit: function() {
+				var self = this;
+				self.showToolbar();
+				self.initializeSliderHero();
+				self.loadCategoryData();	
+				self.loadBranches();
+				self.showNotification();
+				set_last_page('/home');
+				check_home_login();
+				
+			}
+		}
+	}
+</script>

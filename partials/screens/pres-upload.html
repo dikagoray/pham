@@ -1,0 +1,168 @@
+<template>
+	<div class="page">
+
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="left">
+					<a href="/home" class="link ">
+						<i class="icon icon-back"></i>
+						<span class="ios-only" data-i18n="back">Back</span>
+					</a>
+				</div>
+				<div class="title md-only" >Prescriptions </div>
+				
+			</div>
+		</div>
+
+		<div class="page-content">
+		<div class="block" >
+		<div class="card card-vitals-2 " >
+								<div class="card-content-2 card-content-padding">
+								
+								<div class="row ">
+								<div class="col-20 ">
+									<img src="img/delivery-om.svg" style="width:100%;">
+									</div>
+									<div class="col-80 ">
+									<span>Fill in the form below, we will call you to confirm the medicines</span>
+									</div>
+									</div>
+									
+									
+								
+							</div>
+							</div>
+		
+		</div>
+			
+	<div class="list no-hairlines no-hairlines-between">
+	<form id="upload_form" enctype="multipart/form-data" method="post">
+        <ul>
+         
+          <li class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Patient type</div>
+              <div class="item-input-wrap input-dropdown-wrap">
+                <select id="patient_type">
+                  <option value="Medical Aid">Medical Aid</option>
+                  <option value="Drugs Medical Scheme">Drugs Medical Scheme</option>
+                  <option value="Private Patient">Private Patient</option>
+                </select>
+              </div>
+            </div>
+          </li>
+		  
+		  
+		    <li class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Doctor's name</div>
+              <div class="item-input-wrap">
+                <input type="text" id="doctor_name" />
+                <span class="input-clear-button"></span>
+              </div>
+            </div>
+          </li>  
+		  <li class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Medical or DPS Card Number</div>
+              <div class="item-input-wrap">
+                <input type="text" id="medical_card_number" />
+                <span class="input-clear-button"></span>
+              </div>
+            </div>
+          </li>
+		  
+         
+		  
+         <li class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Tell your pharmacist what you'd like to order</div>
+              <div class="item-input-wrap">
+                <textarea class="resizable" id="note" rows="20"></textarea>
+              </div>
+            </div>
+          </li>
+		  
+		   <li class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Upload Your Prescription</div>
+              <div class="item-input-wrap">
+                <label class="button button-small button-fill button-file display-inline-block">
+                  <input type="file" accept="Image/*" name="file1" id="file1" required />
+                  <span>Select File</span>
+                  <i class="fas fa-check"></i>
+                </label>
+              </div>
+			  
+			  
+			  
+            </div>
+          </li>
+		  
+		  
+		    <li class="item-content item-input">
+            <div class="item-inner">
+            <progress id="progressBar" class="hidden" value="0" max="100" style="width:100%;"></progress>
+		  <h4 id="status"></h4>
+		  <p id="loaded_n_total"></p>
+            </div>
+          </li>  
+		  
+		  <li class="item-content item-input">
+            <div class="item-inner">
+           <a class="button button-fill color-green" id="buttonForm" onclick="uploadFile()" href="#">Submit</a>
+            </div>
+          </li>
+		  
+		  
+        </ul>
+		</form>
+      </div>
+			
+			
+
+		</div>
+
+	</div>
+</template>
+
+<style scoped>
+	.card-vitals-2 {
+		border-radius:11px;
+		margin: 0;
+		
+		  background: linear-gradient(141.04deg,#e2bb72 4.52%,rgba(193,148,63,0) 44.97%),linear-gradient(147.72deg,rgba(250,250,250,0.8) 99.53%,#e2bb72 99.4%);
+box-shadow: 2px 1px 32px -15px rgba(0,0,0,0.55);
+-webkit-box-shadow: 2px 1px 32px -15px rgba(0,0,0,0.55);
+-moz-box-shadow: 2px 1px 32px -15px rgba(0,0,0,0.55);
+	}
+
+	.card-vitals-2 .card-content-2 {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.card-vitals-2 i {
+		font-size: 38px;
+	}
+
+	
+	
+</style>
+
+<script>
+
+	return {
+		methods: {
+			
+		},
+		on: {
+			pageInit: function() {
+				var self = this;
+				 check_home_login();
+			}
+		}
+	}
+</script>

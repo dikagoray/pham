@@ -1,0 +1,407 @@
+<template>
+	<div class="page">
+
+		<div class="navbar ">
+			<div class="navbar-inner">
+				<div class="left">
+					<a href="/home" class="link">
+						<i class="icon icon-back"></i>
+						<span class="ios-only" data-i18n="back">Back</span>
+					</a>
+				</div>
+				<div class="title" data-i18n="checkout">Checkout</div>
+				<div class="subnavbar ios-only checkout-tab">
+					<div class="subnavbar-inner">
+						<div class="segmented">
+							<a href="#tab-review" class="button tab-link tab-link-active">Review</a>
+							<a href="#tab-address" class="button tab-link disabled">Shipping </a>
+							<a href="#tab-payment" class="button tab-link disabled">Payment</a>
+							<a href="#tab-done" class="button tab-link disabled">Done</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="toolbar tabbar tabbar-scrollable md-only checkout-tab" >
+			<div class="toolbar-inner">
+				<a href="#tab-review" class="tab-link tab-link-active">Review</a>
+				<a href="#tab-address" class="tab-link disabled">Shipping</a>
+				<a href="#tab-payment" class="tab-link disabled">Payment</a>
+				<a href="#tab-done" class="tab-link disabled">Done</a>
+			</div>
+		</div>
+
+		<div class="tabs">
+
+			<div id="tab-review" class="page-content tab tab-active">
+				<div class="card">
+					<div class="card-content card-content-padding loadProducts_checkout_status">
+						
+						
+							
+						
+						
+				</div>
+				</div>
+				
+<div class="card">
+					<div class="card-content card-content-padding">
+						<button class="button button-big button-fill color-green" @click="showTabAddress">Continue</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="tab-address" class="page-content tab">
+				<div class="card">
+					<div class="card-content padding-vertical">
+					<div align="center">
+										<small class="color-gray">Enter Shipping address(Parcel Receiver address) details</small>
+										<hr>
+										</div>
+						<form id="address" name="address" action="#" method="POST" enctype="multipart/form-data">
+							<div class="list no-hairlines no-hairlines-between margin-bottom">
+								<ul>
+									<li>
+										<div class="item-content item-input item-input-with-info">
+											<div class="item-inner">
+												<div class="item-title item-label">Name</div>
+												<div class="item-input-wrap">
+													<input type="text" name="name" id="name" required placeholder="Name of receiver"/>
+													<div class="item-input-info input-error-message"></div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="item-content item-input item-input-with-info">
+											<div class="item-inner">
+												<div class="item-title item-label">Phone</div>
+												<div class="item-input-wrap">
+													<input type="tel" name="phone" id="phone" required placeholder="Phone"/>
+													<div class="item-input-info input-error-message"></div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="item-content item-input item-input-with-info">
+											<div class="item-inner">
+												<div class="item-title item-label">Shipping Address</div>
+												<div class="item-input-wrap">
+													<input type="text" name="address_txt" id="address_txt" required placeholder="Plot Number & Streetname" />
+													<div class="item-input-info input-error-message"></div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="item-content item-input item-input-with-info">
+											<div class="item-inner">
+												<div class="item-title item-label">City</div>
+												<div class="item-input-wrap">
+													<input type="text" name="city" id="city" required placeholder="City"/>
+													<div class="item-input-info input-error-message"></div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="item-content item-input item-input-with-info">
+											<div class="item-inner">
+												<div class="item-title item-label">Country</div>
+												<div class="item-input-wrap">
+													<input type="text" name="country" id="country" required placeholder="Country"/>
+													<div class="item-input-info input-error-message"></div>
+												</div>
+											</div>
+										</div>
+									</li>
+									
+								</ul>
+							</div>
+							<div class="block">
+								<button type="submit" class="button button-big button-fill  color-green">Continue</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div id="tab-payment" class="page-content tab">
+				<div class="card">
+					<div class="card-content padding-vertical">
+						<form id="payment" name="payment"  enctype="multipart/form-data">
+							<div class="list no-hairlines no-hairlines-between margin-bottom">
+								<ul>
+								<li>
+										<label class="item-radio item-content">
+											<input type="radio" name="method" value="1" checked />
+											<i class="icon icon-radio"></i>
+											<div class="item-media ios-only">
+												<i class="fa-stack fa-lg">
+													<span class="fas fa-square fa-stack-2x text-color-green"></span>
+													<span class="fas fa-coins fa-stack-1x fa-inverse"></span>
+												</i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title">Cash on Delivery/Collection</div>
+												<div class="item-after md-only">
+													<i class="fa-stack fa-lg">
+														<span class="fas fa-circle fa-stack-2x text-color-black"></span>
+														<span class="fas fa-coins fa-stack-1x fa-inverse"></span>
+													</i>
+												</div>
+											</div>
+										</label>
+									</li>
+									<li>
+										<label class="item-radio item-content">
+											<input type="radio" name="method" value="2"  />
+											<i class="icon icon-radio"></i>
+											<div class="item-media ios-only">
+												<i class="fa-stack fa-lg">
+													<span class="fas fa-square fa-stack-2x text-color-black"></span>
+													<span class="far fa-credit-card fa-stack-1x fa-inverse"></span>
+												</i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title">Visa Credit/Debit Card</div>
+												<div class="item-after md-only">
+													<i class="fa-stack fa-lg">
+														<span class="fas fa-circle fa-stack-2x text-color-black"></span>
+														<span class="far fa-credit-card fa-stack-1x fa-inverse"></span>
+													</i>
+												</div>
+												
+											</div>
+										</label>
+										
+									</li>
+									
+									<li>
+										<label class="item-radio item-content">
+											<input type="radio" name="method" value="3"  />
+											<i class="icon icon-radio"></i>
+											<div class="item-media ios-only">
+												<i class="fa-stack fa-lg">
+													<span class="fas fa-square fa-stack-2x text-color-green"></span>
+													<span class="far fa-cc fa-stack-1x fa-inverse"></span>
+												</i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title">Medical Aid</div>
+												<div class="item-after md-only">
+													<i class="fa-stack fa-lg">
+														<span class="fas fa-circle fa-stack-2x text-color-black"></span>
+														<span class="far fa-cc fa-stack-1x fa-inverse"></span>
+													</i>
+												</div>
+												
+											</div>
+										</label>
+										<div align="center">
+										<small class="color-gray">Provide your Medical Aid on Collection/Delivery</small>
+										<br/>
+										</div>
+									</li>
+									
+									
+									
+									
+								</ul>
+							</div>
+							<div class="block margin-bottom">
+								<div class="input-error-message text-align-center" style="position: relative;"></div>
+							</div>
+							<div class="block">
+								<a href="#" @click="submitData()" class="button button-big button-fill  color-green">Place Order</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div id="tab-done" class="page-content tab">
+				<div class="empty-state">
+					<div class="empty-state-media">
+						<img src="assets/custom/img/shopping.svg" alt="" />
+					</div>
+					<div class="empty-state-title">Thank You</div>
+					<div class="empty-state-text">Your order(<span class="order_code"></span>) <br> has been received successfully.</div>
+					<div class="empty-state-actions">
+						<a href="/orders" class="button button-big button-fill button-round color-green">Track My Orders</a>
+					</div>
+				</div>
+			</div>
+
+			</div>
+
+	</div>
+</template>
+
+<style scoped>
+	.empty-state .empty-state-media img {
+		height: auto;
+		width: 256px;
+	}
+</style>
+
+<script>
+	return {
+		data: function() {
+			return {
+				formValidatorAddress: null,
+				formValidatorPayment: null
+			}
+		},
+		methods: {
+		submitData: function() {
+			var self = this;
+			var branch_id=localStorage.getItem('selected_branch_id');
+			var order_code=generateORDERCODE();
+			var user_id=localStorage.user_phamarcy_id;
+			var name=$('#name').val();
+			var phone=$('#phone').val();	
+			var city=$('#city').val();
+			var address=$('#address_txt').val();
+			var country=$('#country').val();
+			var payment = document.getElementsByName('method');
+			var selected_payment=0;
+
+			for (var i = 0, length = payment.length; i < length; i++) {
+			if (payment[i].checked) {
+				var selected_payment=payment[i].value;
+				break;
+			}
+			}	
+			
+				app.preloader.show();
+					var xhr = $.get(main_url+"cart/order_save.php?user_id="+user_id+
+					"&branch_id="+branch_id+
+					"&name="+name+
+					"&phone="+phone+	
+					"&city="+city+
+					"&address="+address+
+					"&country="+country+
+					"&order_code="+order_code+
+					"&payment_method="+selected_payment+
+					"&submitData=?", function(data) {
+					
+					if(data==2){
+					app.preloader.hide();
+
+					app.tab.show('#tab-done');
+					$('.order_code').html('<b>'+order_code+'</b>');
+					self.$('[href="#tab-review"]').addClass('disabled');
+					self.$('[href="#tab-address"]').addClass('disabled');
+					self.$('[href="#tab-payment"]').addClass('disabled');
+					} else if(data==1){
+					app.preloader.hide();
+					app.toast.show({
+					icon: '<i class="fas fa-fw fa-lg fa-close"></i>',
+					text: 'Error',
+					position: 'bottom',
+					cssClass: 'toast-round bg-color-red'
+				});
+					} else {
+					app.preloader.hide();
+					console.log(data);
+					app.toast.show({
+					icon: '<i class="fas fa-fw fa-lg fa-close"></i>',
+					text: 'Error',
+					position: 'bottom',
+					cssClass: 'toast-round bg-color-red'
+				});
+					}
+					});
+			
+			},
+			
+			showTabAddress: function() {
+				var self = this;
+				self.$('[href="#tab-address"]').removeClass('disabled');
+				app.tab.show('#tab-address');
+			},
+			initializeAddressForm: function() {
+				var self = this;
+				self.formValidatorAddress = jQuery('form[name=address]').validate({
+					ignore: [],
+					rules: {
+						name: {
+							required: true
+						},
+						phone: {
+							required: true
+						},
+						city: {
+							required: true
+						},
+						address_txt: {
+							required: true
+						},
+						country: {
+							required: true
+						}
+					},
+    			messages: {
+						name: {
+							required: 'Please enter name.'
+      			},
+						phone: {
+							required: 'Please enter phone number.'
+      			},
+						city: {
+							required: 'Please enter city.'
+      			},
+				       address_txt: {
+							required: 'Please enter address.'
+      			},
+						country: {
+							required: 'Please enter country.'
+      			}
+					},
+					submitHandler: function(form) {
+						self.$('[href="#tab-payment"]').removeClass('disabled');
+						app.tab.show('#tab-payment');
+					}
+				});
+			},
+			initializePaymentForm: function() {
+				var self = this;
+				self.formValidatorPayment = jQuery('form[name=payment]').validate({
+					ignore: [],
+					rules: {
+						method: {
+							required: true
+						}
+					},
+    			messages: {
+						method: {
+							required: 'Please select payment method.'
+      			}
+					},
+					errorPlacement: function(error, element) {
+						error.appendTo('form[name=payment] .input-error-message');
+					},
+					submitHandler: function(form) {
+						self.$('[href="#tab-done"]').removeClass('disabled');
+						
+						
+					}
+				});
+			}
+		},
+		on: {
+			pageInit: function() {
+				var self = this;
+				set_last_page('/checkout');
+				 check_home_login();
+				 $('.checkout-tab').removeClass('hidden');
+				 loadProducts_checkout();
+				self.initializeAddressForm();
+				self.initializePaymentForm();
+			}
+		}
+	}
+</script>

@@ -1,0 +1,223 @@
+<template>
+	<div class="page">
+
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="left">
+					<a href="/home" class="link">
+						<i class="icon icon-back"></i>
+						<span class="ios-only" data-i18n="back">Back</span>
+					</a>
+				</div>
+				<div class="title md-only" data-i18n="Orders">Orders</div>
+				<div class="right">
+					<a href="/cart" class="link icon-only" >
+						<i class="icon f7-icons">bag<span class=" cart_count">0</span></i>
+					</a>
+					
+				</div>
+				<div class="subnavbar ios-only">
+					<div class="subnavbar-inner">
+						<div class="title" data-i18n="Orders">Orders</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="page-content">
+
+			<div class="data-table">
+			{{#if orders}}
+			<table >
+			<thead>
+			<tr>
+			<th>Code</th>
+			
+			
+			<th>Date</th>
+			<th>Status</th>
+			</tr>
+				</thead>
+					<tbody>
+			{{#each orders}}
+		<tr @click="viewOrder"  data-name="{{this.order_code}}">
+			<td><a href="javascript:;" @click="viewOrder"  data-name="{{this.order_code}}">{{this.order_code}}</a></td>
+			<td>
+			{{this.time_posted}}
+			</td>
+			<td>
+			
+			
+			{{#js_if "this.order_status == '0'"}}
+			<span class="badge bg-color-yellow text-color-black">Not Processed</span>
+
+			{{/js_if}}
+			{{#js_if "this.order_status == '1'"}}
+			<span class="badge bg-color-green">Processed</span>
+
+			{{/js_if}}
+			{{#js_if "this.order_status == '2'"}}
+			<span class="badge bg-color-green">Verified</span>
+
+			{{/js_if}}	
+			{{#js_if "this.order_status == '3'"}}
+			<span class="badge bg-color-green">Shipped</span>
+
+			{{/js_if}}	
+			{{#js_if "this.order_status == '4'"}}
+			<span class="badge bg-color-green">To be picked</span>
+
+			{{/js_if}}
+			{{#js_if "this.order_status == '5'"}}
+			<span class="badge bg-color-green">Complete</span>
+
+			{{/js_if}}
+			{{#js_if "this.order_status == '6'"}}
+			<span class="badge bg-color-red">Cancelled</span>
+
+			{{/js_if}}
+			
+			</td>
+		
+			
+			</tr>
+			
+			{{/each}}
+				</tbody>
+			</table>
+				{{else}}
+				
+				
+					{{/if}}
+			
+			
+				
+			</div>
+			
+
+
+			
+
+		</div>
+		
+		
+		<div class="popup popup-tablet-fullscreen order-modal">
+			<div class="view">
+				<div class="page">
+
+					<div class="navbar">
+						<div class="navbar-inner">
+							<div class="left ios-only">
+								<a href="#" class="link popup-close">
+									<span data-i18n="close">Close</span>
+								</a>
+							</div>
+							<div class="title order_code" ></div>
+							<div class="right md-only">
+								<a href="#" class="link icon-only popup-close">
+									<i class="icon material-icons md-only">close</i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="page-content" id="order_view">
+					
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		
+
+	</div>
+</template>
+
+<style scoped>
+	
+	.app-logo {
+		height: 128px;
+		width: auto;
+	}
+
+	.app-title {
+		font-size: 17px;
+	}
+
+	.app-tagline {
+		font-size: 14px;
+	}
+
+	.app-version {
+		font-size: 12px;
+	}
+
+	.app-developer {
+		font-size: 11px;
+	}
+
+	.fa-coffee {
+		color: #964B00;
+	}
+
+	.fa-heart {
+		color: #FA5252;
+	}
+</style>
+
+<script>
+	return {
+		data: function() {
+			
+		return {
+			orders: null,
+			nextShop: '/selected_order'
+			}
+		},
+		methods: {
+	loadData: function() {
+				var self = this;
+				var user_id=localStorage.user_phamarcy_id;
+				app.request.json(
+					main_url+'data/orders.php?user_id='+user_id,
+					function(data) {
+						if (data) {
+							self.$setState({
+								orders: data
+							});
+						}
+					}
+				);
+			},
+	
+	viewOrder: function(event) {
+				var self = this;
+				var target = event.target.tagName === 'A' ? event.target : event.currentTarget;
+				
+				var order_code = target.dataset.name;
+				$('.order_code').html('Order: '+order_code);	
+				var popup = app.popup.create({
+								el: '.order-modal'
+							});
+							popup.open();
+							
+				var xhr = $.get( main_url+"cart/order.php?order_code="+order_code, function(data) {
+				$('#order_view').html(data);
+				});
+				
+			},
+			
+			
+			},
+		on: {
+			pageInit: function() {
+				var self = this;
+					self.loadData();
+					 check_home_login();
+					 set_last_page('/orders');
+			}
+		}
+	}
+</script>
