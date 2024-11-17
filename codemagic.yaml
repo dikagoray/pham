@@ -24,9 +24,7 @@ workflows:
           else
             echo "No tests found, skipping..."
           fi
-    artifacts:
-      - path: platforms/ios/build/emulator/*.app
-        type: folder  # Collect the built app for testing on a simulator
+  
     publishing:
       email:
         recipients:
