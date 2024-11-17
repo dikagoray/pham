@@ -1,23 +1,33 @@
 workflows:
-  cordova-ios-android:
-    name: Cordova iOS
+  ios-testing:
+    name: iOS Build and Test
     environment:
-      node: 16.13.0  # Specify the Node.js version
+      xcode: 14.0  # Specify the Xcode version
+      cocoapods: default
       vars:
-        # Define any environment variables, like API keys
-        CORDOVA_PLATFORM: "ios"  # Change to "android" for Android builds
+        CORDOVA_PLATFORM: "ios"  # Set Cordova platform to iOS
     scripts:
-      - name: Add Cordova platforms
+      - name: Install Node.js dependencies
+        script: |
+          npm install -g cordova
+          npm install
+      - name: Add iOS platform to Cordova
         script: |
           cordova platform add ios
-      - name: Build for iOS
+      - name: Build the iOS app for testing
         script: |
-          if [ "$CORDOVA_PLATFORM" == "ios" ]; then
-            cordova build ios --release
+          cordova build ios
+      - name: Run unit tests (if applicable)
+        script: |
+          if [ -d "tests" ]; then
+            npm run test
+          else
+            echo "No tests found, skipping..."
           fi
     artifacts:
-      - build/*  # Adjust the path for iOS and Android output files
+      - path: platforms/ios/build/emulator/*.app
+        type: folder  # Collect the built app for testing on a simulator
     publishing:
       email:
         recipients:
-          - dikagoray@gmail.com  # Add your email to receive build notifications
+          - dikagoray@gmail.com  # Add your email to receive notifications
