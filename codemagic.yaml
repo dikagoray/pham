@@ -3,7 +3,7 @@ workflows:
     name: iOS Build and Test
     environment:
       xcode: 11.0.0 # Specify the Xcode version
-      cocoapods: 1.8.0
+      cocoapods: default
       vars:
         CORDOVA_PLATFORM: "ios"  # Set Cordova platform to iOS
     scripts:
