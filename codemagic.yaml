@@ -7,7 +7,7 @@ workflows:
       vars:
         CORDOVA_PLATFORM: "ios"  # Set Cordova platform to iOS
     scripts:
-      - name: Install Node.js dependencies
+      - name: Install dependencies
         script: |
           npm install -g cordova
           npm install
