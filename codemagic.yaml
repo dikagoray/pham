@@ -2,7 +2,7 @@ workflows:
   ios-testing:
     name: iOS Build and Test
     environment:
-      xcode: 14.0  # Specify the Xcode version
+      xcode: 11.0  # Specify the Xcode version
       cocoapods: default
       vars:
         CORDOVA_PLATFORM: "ios"  # Set Cordova platform to iOS
