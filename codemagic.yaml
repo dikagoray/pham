@@ -2,12 +2,12 @@ workflows:
   ios-testing:
     name: iOS Build and Test
     environment:
-      xcode: 11.0.0 # Specify the Xcode version
+      xcode: 11.0 # Specify the Xcode version
       cocoapods: default
       vars:
         CORDOVA_PLATFORM: "ios"  # Set Cordova platform to iOS
     scripts:
-     - name: Install dependencies
+     - name: Install Node.js dependencies
         script: |
           npm install -g cordova
           npm install
