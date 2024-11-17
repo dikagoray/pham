@@ -1,16 +1,12 @@
 workflows:
   cordova-ios-android:
-    name: Cordova iOS & Android Build
+    name: Cordova iOS
     environment:
       node: 16.13.0  # Specify the Node.js version
       vars:
         # Define any environment variables, like API keys
         CORDOVA_PLATFORM: "ios"  # Change to "android" for Android builds
     scripts:
-      - name: Install dependencies
-        script: |
-          npm install -g cordova
-          npm install
       - name: Add Cordova platforms
         script: |
           cordova platform add $CORDOVA_PLATFORM
@@ -18,11 +14,6 @@ workflows:
         script: |
           if [ "$CORDOVA_PLATFORM" == "ios" ]; then
             cordova build ios --release
-          fi
-      - name: Build for Android
-        script: |
-          if [ "$CORDOVA_PLATFORM" == "android" ]; then
-            cordova build android --release
           fi
     artifacts:
       - build/*  # Adjust the path for iOS and Android output files
