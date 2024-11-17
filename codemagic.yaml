@@ -9,7 +9,7 @@ workflows:
     scripts:
       - name: Add Cordova platforms
         script: |
-          cordova platform add $CORDOVA_PLATFORM
+          cordova platform add ios
       - name: Build for iOS
         script: |
           if [ "$CORDOVA_PLATFORM" == "ios" ]; then
