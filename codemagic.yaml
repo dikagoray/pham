@@ -22,4 +22,3 @@ workflows:
           
     artifacts:
           - path: platforms/ios/build/emulator/*.app
-          type: folder
