@@ -21,7 +21,7 @@ workflows:
           ls -R platforms/ios/build/
 
           artifacts:
-  path: platforms/ios/build/emulator/*.app
+  -path: platforms/ios/build/emulator/*.app
     type: folder
 
    
