@@ -15,10 +15,9 @@ workflows:
       - name: Build for iOS
         script: |
           cordova build ios
-      - name: build directory
+      - name: Build .ipa
         script: |
-          echo "iOS Build directory contents:"
-          ls -R platforms/ios/build
+           xcode-project build-ipa
 artifacts:
       - build/ios/build/*.ipa
 publishing:
