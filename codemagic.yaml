@@ -15,7 +15,7 @@ workflows:
       - name: Build for iOS
         script: |
           cordova build ios
-      - name: Debug build directory
+      - name: build directory
         script: |
           echo "iOS Build directory contents:"
           ls -R platforms/ios/build/
