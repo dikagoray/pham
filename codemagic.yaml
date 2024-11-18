@@ -20,4 +20,5 @@ workflows:
           echo "iOS Build directory contents:"
           ls -R platforms/ios/build
     artifacts:
-      - build/ios/build/*.ipa
+      - platforms/ios/build/*.ipa
+      type: file
