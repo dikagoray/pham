@@ -2,32 +2,23 @@ workflows:
   ios-testing:
     name: iOS Build and Test
     environment:
-      xcode: 15.1  # Specify the Xcode version
+      xcode: 15.1
       cocoapods: default
-      vars:
-        CORDOVA_PLATFORM: "ios"  # Set Cordova platform to iOS
     scripts:
-      - name: Install Node.js dependencies
+      - name: Install dependencies
         script: |
           npm install -g cordova
           npm install
-      - name: Add iOS platform to Cordova
+      - name: Add iOS platform
         script: |
           cordova platform add ios
-      - name: Build the iOS app for testing
+      - name: Build for iOS
         script: |
           cordova build ios
-      - name: Run unit tests (if applicable)
+      - name: Debug build directory
         script: |
-          if [ -d "tests" ]; then
-            npm run test
-          else
-            echo "No tests found, skipping..."
-          fi
+          echo "iOS Build directory contents:"
+          ls -R platforms/ios/build/
     artifacts:
-      - path: platforms/ios/build/
-        type: folder  # Collect the built app for testing on a simulator
-    publishing:
-      email:
-        recipients:
-          - dikagoray@gmail.com  # Add your email to receive notifications
+      - path: platforms/ios/build/emulator/*.app
+        type: folder
