@@ -24,7 +24,10 @@ workflows:
           else
             echo "No tests found, skipping..."
           fi
-  
+  artifacts:
+      - path: cordova/platforms/ios/build/emulator/*.app
+        type: folder
+        
     publishing:
       email:
         recipients:
