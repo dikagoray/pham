@@ -19,8 +19,8 @@ workflows:
         script: |
           echo "iOS Build directory contents:"
           ls -R platforms/ios/build/
-    artifacts:
-      - path: platforms/ios/build/emulator/*.app
-        type: folder
+        artifacts:
+          - path: platforms/ios/build/emulator/*.app
+            type: folder
 
    
