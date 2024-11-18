@@ -18,7 +18,7 @@ workflows:
       - name: Debug build directory
         script: |
           echo "iOS Build directory contents:"
-          ls -R platforms/ios/build
+          ls -R platforms/ios/build/
     artifacts:
       - platforms/ios/build/device/*.ipa
 type: file
