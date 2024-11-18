@@ -20,5 +20,11 @@ workflows:
           echo "iOS Build directory contents:"
           ls -R platforms/ios/build/
 artifacts:
-- path: platforms/ios/build/test.ipa
-type: file 
+      - build/ios/ipa/*.ipa
+ publishing:
+      email:
+        recipients:
+          - dikagoray@gmail.com
+        notify:
+          success: true
+          failure: true
