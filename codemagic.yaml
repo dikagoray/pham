@@ -21,5 +21,5 @@ workflows:
         script: |
           cordova build ios
     artifacts:
-      - path: cordova/platforms/ios/build/emulator/*.app
+      - path: cordova/platforms/ios/build/emulator/
         type: folder
