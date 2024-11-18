@@ -21,4 +21,4 @@ workflows:
           ls -R platforms/ios/build
     artifacts:
       - platforms/ios/build/*.ipa
-      type: file
+type: file
