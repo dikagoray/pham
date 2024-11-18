@@ -1,0 +1,444 @@
+<template>
+	<div class="page">
+
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="left">
+					<a href="/home" class="link">
+						<i class="icon icon-back"></i>
+						<span class="ios-only" data-i18n="back">Back</span>
+					</a>
+				</div>
+				<div class="title md-only" data-i18n="products-list">List</div>
+				<div class="right">
+				<a href="/cart" class="link icon-only" >
+						<i class="icon f7-icons">bag<span class=" cart_count"></span></i>
+					</a>
+				</div>
+				<div class="subnavbar ios-only">
+					<div class="subnavbar-inner">
+						<div class="title" data-i18n="products-list"> List</div>
+					</div>
+				</div>
+				<form id="searchbar-infinite-scroll" class="searchbar searchbar-expandable searchbar-init" data-search-container="#list-products"  data-search-item="li" data-search-in=".product-name">
+					<div class="searchbar-inner">
+						<div class="searchbar-input-wrap">
+							<input type="search" placeholder="Search" data-i18n="[placeholder]search" />
+							<i class="searchbar-icon"></i>
+							<span class="input-clear-button"></span>
+						</div>
+						<span class="searchbar-disable-button" data-i18n="cancel">Cancel</span>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="page-content infinite-scroll-content" >
+		<div class="block" align="center"><a class="button button-fill color-blue" href="/categories">Shop by Category Name</a> </div>
+<div class="searchbar-not-found">
+				<div class="empty-state">
+					<div class="empty-state-media">
+						<img src="assets/custom/img/no-search.svg" alt="" />
+					</div>
+					<div class="empty-state-title" data-i18n="no-search-results">No Search Results</div>
+				</div>
+			</div>
+			<div id="no_products" class="empty-state hidden">
+				<div class="empty-state-media">
+					<img class="filter-grayscale-10" src="assets/custom/img/no-search.svg" alt="" />
+				</div>
+				<div class="empty-state-title">EMPTY</div>
+				<div class="empty-state-text">There are no products listed </div>
+				<div class="empty-state-actions">
+					<a href="/home" class="button button-big button-fill button-round color-green" >Go Back</a>
+				
+				</div>
+			</div>
+
+
+<div class="searchbar-found">
+			<div class="block list " id="list-products">
+				{{#if products}}
+				<div class="row ">
+					
+					{{#each products}}
+				<li class="col-50" style="list-style-type: none;">
+					<div >
+				<div class="category_card_3 shadow">
+						
+					{{#js_if "this.prescription == '1'"}}
+										<span class="wdp-ribbon wdp-ribbon-three">Prescribed</span>
+										{{else}}
+										{{/js_if}}
+								<div align="center" @click="preview({{this.id}})" ><img src="{{this.image}}" style="width:100%;"></div>
+							<div class="card-content card-content-padding" @click="preview({{this.id}})" align="center">
+							
+							
+							
+								<div class="product-name mytitle" style="font-size:12px;">{{this.name}}</div>
+								
+									<span style="font-size:18px;font-weight:bold;">P{{this.price}}</span>
+									 <div style="width:100%;overflow-x: auto; 
+                overflow-y: hidden; 
+                white-space: nowrap; 
+				flex:1;
+				padding-top:10px;padding-bottom:3px;" >{{this.category}}</div>
+								
+							</div>
+							<div class="card-footer no-hairline">
+						<a href="#" style="width:100%;" class="button button-fill color-gray button-small addBtn_{{this.id}}" 
+						data-tooltip="Add to Cart" @click="preview({{this.id}})">
+									<i class="fas fa-fw fa-cart-plus "></i> Add to Cart
+								</a>
+						
+					</div>
+					</div>
+					
+					</div>
+			</li>
+					
+					{{/each}}
+				
+				</div>
+				{{/if}}
+			</div>
+</div>
+
+		</div>
+		
+		<div class="fab fab-right-bottom color-green">
+			<a href="#" class=" searchbar-enable" data-searchbar="#searchbar-infinite-scroll">
+				<i class="icon f7-icons ios-only">search</i>
+				<i class="icon material-icons md-only">search</i>
+			</a>
+		</div>
+
+		<div class="popup popup-tablet-fullscreen product-modal">
+			<div class="view">
+				<div class="page">
+
+					<div class="navbar">
+						<div class="navbar-inner">
+							<div class="left ios-only">
+								<a href="#" class="link popup-close">
+									<span data-i18n="close">Close</span>
+								</a>
+							</div>
+							<div class="title product_name" ></div>
+							<div class="right md-only">
+								<a href="#" class="link icon-only popup-close">
+									<i class="icon material-icons md-only">close</i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="page-content">
+						<div class="block">
+						
+						
+						
+						<div class="card">
+				<span class="product_prescription"></span>
+
+					<div align="center" >
+				<img src="img/default.jpg" class=" lazy lazy-fade-in" style="width:100%;" align="center" alt="Product Image" id="product_image" />
+			</div>
+			
+				<div class="card-content card-content-padding">
+					<div class="product-name product_name"   ></div>
+				
+					<div class="product-price">
+						
+						<span style="font-size:20px;"><b>P<span style="font-size:29px;" class="price-final product_price" ></span></b></span>
+					</div>
+					 <div style="width:100%;overflow-x: auto; 
+                overflow-y: hidden; 
+                white-space: nowrap; 
+				flex:1;
+				padding-top:10px;padding-bottom:3px;"  > <span class="tag-tag" id="product_mesurement"></span>
+				<span class="product-category"></span></div>
+					<div class="product-description">
+						
+						
+					</div>
+					
+				</div>
+			</div>
+			
+			<div class="card ">
+			
+				<div class="card-content card-content-padding">
+			
+		 
+				 <div class="list no-hairlines no-hairlines-between">
+				<ul>
+				 <li class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Quantity</div>
+              <div class="item-input-wrap">
+                <input type="number" id="quantity" min="1" value="1" step="1" />
+               
+              </div>
+            </div>
+          </li>
+		   
+		
+		  </ul>
+		  </div>
+		  <br/><br/>
+					<button class="button button-big button-fill color-blue addBtn"   data-tooltip="Add to Cart" @click="addToCart()"><i class="fas fa-fw fa-cart-plus "></i> Add to Cart</button>
+				</div>
+			</div>
+
+			
+
+					
+						
+						
+							</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		
+
+	</div>
+</template>
+
+<style scoped>
+#product_name {
+font-size:10px;
+}
+	.product-type {
+		text-align: left;
+	}
+
+	[dir=rtl] {{this}} .product-type {
+		text-align: right;
+	}
+
+	.product-pack {
+		font-size: 18px;
+		text-align: right;
+	}
+
+	[dir=rtl] {{this}} .product-pack {
+		text-align: left;
+	}
+
+	.product-image {
+		display: block;
+		height: 144px;
+		margin: 0 auto;
+		margin-top: 16px;
+	}
+
+	.product-name {
+		font-size: 18px;
+		margin-top: 16px;
+		text-align: center;
+	}
+
+	.product-price {
+		margin-top: 16px;
+	}
+
+	.price-original {
+		font-size: 20px;
+		text-decoration: line-through;
+		text-align: right;
+	}
+
+	[dir=rtl] {{this}} .price-original {
+		text-align: left;
+	}
+
+	.price-final {
+		font-size: 20px;
+		font-weight: bold;
+		text-align: left;
+	}
+
+	[dir=rtl] {{this}} .price-final {
+		text-align: right;
+	}
+</style>
+
+<script>
+	return {
+		data: function() {
+			return {
+				products: null
+			}
+		},
+		methods: {
+			loadData: function() {
+				var self = this;
+				var branch_id=localStorage.getItem('selected_branch_id');
+				app.request.json(
+					main_url+'data/products.php?branch_id='+branch_id,
+					function(data) {
+						if (data) {
+							self.$setState({
+								products: data
+							});
+						}
+					}
+				);
+			},
+			preview: function(product_id) {
+				var self = this;
+				console.log('Product Id: '+product_id);
+				
+				localStorage.setItem("selected_product_id",product_id);
+				app.preloader.show();
+				$('.addBtn '+product_id).html('<i class="fas fa-fw fa-cart-plus text-color-green"></i> Add to cart');
+		var shop_data=fetch(main_url+'data/product.php?product_id='+product_id)
+	  .then(response => response.text())
+	  .then(results => {
+	  var checkData=JSON.parse(results);
+	  
+		var return_data=JSON.stringify(checkData);
+		
+		 var print_data=JSON.parse(return_data);
+		//console.log(print_data[0].name);
+		app.preloader.hide();	
+		var prescription=print_data[0].prescription;
+		if(prescription==1){
+			$('.product_prescription').html('<span class="wdp-ribbon wdp-ribbon-three">Prescribed</span>');
+		} else {
+		$('.product_prescription').html('');
+		}
+		console.log(print_data[0].categories);
+		$('.product_name').html(print_data[0].name);
+		$('#product_mesurement').html(print_data[0].mesurement);
+		$('.product_price').html(print_data[0].price);
+		$('.product-description').html(print_data[0].description);
+		$('.product-category').html(print_data[0].categories);
+			
+		$('#product_image').attr('src',print_data[0].image);
+		
+				
+		
+			
+	}); 
+				var popup = app.popup.create({
+								el: '.product-modal'
+							});
+							popup.open();
+			},
+			
+			addToWishlist: function() {
+				var self = this;
+				app.toast.show({
+					icon: '<i class="fas fa-fw fa-lg fa-heart"></i>',
+					text: 'Added to Wishlist',
+					position: 'bottom',
+					cssClass: 'toast-round bg-color-pink'
+				});
+			},
+					addToCart: function() {
+				var self = this;
+				
+				if(check_login()==false){
+				var popup = app.popup.create({
+								el: '.product-modal'
+							});
+							popup.close();
+				app.toast.show({
+		text: 'Please login to continue',
+		position: 'bottom',
+		cssClass: 'bg-color-green'
+	});	
+				app.views.current.router.navigate('/login');
+				} else {
+				
+				var user_email=localStorage.user_phamarcy_session;
+				
+				var branch_id=localStorage.getItem('selected_branch_id');
+				var product_id=localStorage.getItem('selected_product_id');
+			
+				app.preloader.show();
+				console.log('Product Id: '+product_id);
+				$('.addBtn ').html('<i class="fas fa-fw fa-spin fa-spinner"></i>');
+				$('.addBtn_'+product_id).html('<i class="fas fa-fw fa-spin fa-spinner"></i>');
+			
+				var quantity=$('#quantity').val();
+		
+				var xhr = $.get( main_url+"cart/add.php?product_id="+product_id+
+				"&quantity="+quantity+
+				"&user_email="+user_email+
+				"&branch_id="+branch_id+"&cart_add=?", function(data) {
+				$('.addBtn ').html('<i class="fas fa-fw fa-cart-plus"></i> Add to cart');
+					app.preloader.hide();
+					 if(data==1){
+					$('.addBtn_'+product_id).html('<i class="fas fa-fw fa-cart-plus"></i> Add to cart');
+					app.toast.show({
+					icon: '<i class="fas fa-fw fa-lg fa-cart-plus"></i>',
+					text: 'Product already added',
+					position: 'center',
+					cssClass: 'toast-round bg-color-red'
+				});
+					} else if(data==2){
+					$('.addBtn_'+product_id).html('<i class="fas fa-fw fa-cart-plus "></i> Add to cart');
+					
+					app.toast.show({
+					icon: '<i class="fas fa-fw fa-lg fa-times"></i>',
+					text: 'error data',
+					position: 'center',
+					cssClass: 'toast-round bg-color-red'
+				});
+					} else if(data==3){
+					$('.addBtn_'+product_id).html('<i class="fas fa-fw fa-check"></i> Added ');
+					$('.addBtn_'+product_id).removeClass('color-gray');
+					$('.addBtn_'+product_id).addClass('color-green');
+					cart_count();
+					app.toast.show({
+					icon: '<i class="fas fa-fw fa-lg fa-check-circle"></i>',
+					text: 'Added to Cart',
+					position: 'center',
+					cssClass: 'toast-round bg-color-green'
+				});
+					}
+					else if(data==4){
+					$('.addBtn_'+product_id).html('<i class="fas fa-fw fa-check"></i> Added ');
+					$('.addBtn_'+product_id).removeClass('color-gray');
+					$('.addBtn_'+product_id).addClass('color-green');
+					cart_count();
+					app.toast.show({
+					icon: '<i class="fas fa-fw fa-lg fa-warning"></i>',
+					text: 'Sorry! You can not order from different shops at once',
+					position: 'center',
+					cssClass: 'toast-round bg-color-red'
+				});
+					} else {
+					$('.addBtn_'+product_id).html('<i class="fas fa-fw fa-cart-plus"></i> Add to cart');
+					
+				
+				console.log(data);
+					}
+					
+				}).fail(function() {
+					 
+				  });
+				
+		
+		}
+				
+			
+			},
+		},
+		on: {
+			pageInit: function() {
+				var self = this;
+				self.loadData();
+				cart_count();
+				set_last_page('/products');
+			}
+		}
+	}
+</script>

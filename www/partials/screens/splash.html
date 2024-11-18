@@ -1,0 +1,140 @@
+<template>
+	<div class="page no-navbar no-toolbar no-swipeback ">
+
+		<div class="page-content">
+
+			<div class="splash">
+				<div class="splash-media">
+				<img src="assets/custom/img/retina.png" style="width:170px;">
+					</div>
+				<div class="splash-preloader">
+					<span class="preloader preloader-white"></span>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</template>
+
+<style scoped>
+	.splash {
+		align-items: stretch;
+		background-color: #343A40;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		justify-content: space-around;
+		overflow: hidden;
+		text-align: center;
+	}
+
+	.ios {{this}} .splash {
+		padding: 0 15px;
+	}
+
+	.md {{this}} .splash {
+		padding: 0 16px;
+	}
+
+	.ios {{this}} .splash-media {
+		margin: 35px 0;
+	}
+
+	.md {{this}} .splash-media {
+		margin: 32px 0;
+	}
+
+	.splash-media .logo {
+		height: 56px;
+		width: auto;
+	}
+
+	.splash-media .logo path {
+		fill-opacity: 0;
+		opacity: 0;
+		stroke-width: 5px;
+		transition: fill-opacity 1s;
+	}
+
+	.splash-media .logo.animation-begin path {
+		opacity: 1;
+	}
+
+	.splash-media .logo.animation-complete path {
+		fill-opacity: 1;
+		stroke-width: 0;
+	}
+
+	.splash-preloader {
+		opacity: 0;
+		transition: opacity 1s;
+	}
+
+	.ios {{this}} .splash-preloader {
+		margin: 35px 0;
+	}
+
+	.md {{this}} .splash-preloader {
+		margin: 32px 0;
+	}
+
+	.splash-preloader .preloader {
+		height: 32px;
+		width: 32px;
+	}
+</style>
+
+<script>
+	return {
+		data: function() {
+			return {
+				animationDuration: 2000,
+				nextScreen: '/home',
+				splashDuration: 3000
+			}
+		},
+		methods: {
+			hideToolbar: function() {
+				var self = this;
+				setTimeout(function() {
+					self.$('.toolbar').addClass('toolbar-hidden');
+				});
+			},
+			animateLogo: function() {
+				var self = this;
+				var animation = anime({
+					duration: self.animationDuration,
+					easing: 'easeInOutSine',
+					strokeDashoffset: [anime.setDashoffset, 0],
+					targets: '.splash-media .logo path'
+				});
+				animation.begin = function() {
+					self.$('.splash-media .logo').addClass('animation-begin');
+				}
+				animation.complete = function() {
+					self.$('.splash-media .logo').addClass('animation-complete');
+					self.loadNextScreen();
+				}
+			},
+			showPreloader: function() {
+				var self = this;
+				setTimeout(function() {
+					self.$('.splash-preloader').css('opacity', 1);
+				}, 10);
+			},
+			loadNextScreen: function() {
+				var self = this;
+				app.views.current.router.navigate(self.nextScreen);
+			}
+		},
+		on: {
+			pageInit: function() {
+				var self = this;
+				self.hideToolbar();
+				self.animateLogo();
+			}
+		}
+	}
+</script>

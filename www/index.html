@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+	<head>
+
+		<!-- Begin: Basic Meta Tags -->
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-eval' data: blob: filesystem: ws: gap: gap://ready cdvfile: file://* https://ssl.gstatic.com *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; connect-src * 'unsafe-inline'; child-src *; media-src *;" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, minimal-ui, viewport-fit=cover" />
+		<!-- End: Basic Meta Tags -->
+		<!-- Begin: Android Meta Tags -->
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="theme-color" content="#343A40" />
+		<!-- End: Android Meta Tags -->
+		<!-- Begin: Favicons -->
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/custom/img/logo.png" />
+		<!-- Begin: Stylesheets -->
+		<link class="f7" rel="stylesheet" href="assets/vendor/framework7/css/framework7.min.css" />
+
+		<link rel="stylesheet" href="assets/vendor/chart/chart.min.css" />
+		<link rel="stylesheet" href="assets/vendor/font-awesome/css/all.css" />
+		<link rel="stylesheet" href="assets/vendor/framework7-icons/css/framework7-icons.css" />
+		<link rel="stylesheet" href="assets/vendor/framework7-plugins/keypad/framework7.keypad.min.css" />
+		<link rel="stylesheet" href="assets/vendor/hamburgers/hamburgers.min.css" />
+		<link rel="stylesheet" href="assets/vendor/material-icons/material-icons.css" />
+		<link rel="stylesheet" href="assets/vendor/rateyo/jquery.rateyo.min.css" />
+		<link rel="stylesheet" href="assets/vendor/timedropper/timedropper.min.css" />
+		<link rel="stylesheet" href="assets/vendor/nectar/nectar.css" />
+		<link rel="stylesheet" href="assets/custom/css/croppie.css" />
+		<link rel="stylesheet" href="assets/custom/css/custom.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css" />
+		<!-- End: Stylesheets -->
+
+		<title>Pharmacy Direct</title>
+
+		<style scoped>
+			.tag {
+  background-color: #FFEDE8;
+  border-radius: 60px;
+  color:#000;
+  font-weight: 100;
+  display: inline-block;
+  padding: 5px 11px;
+  font-style: normal;
+  font-size: 11px;
+}
+
+.tag-tag {
+  background-color: #d7f4fa;
+  color:#000;
+  border-radius: 60px;
+  font-weight: 100;
+  display: inline-block;
+  padding: 5px 11px;
+  font-style: normal;
+  font-size: 11px;
+}
+		.hidden {
+		display:none;
+		}
+		
+		.category_card {
+		width:100px;
+		margin:5px;
+		display: inline-block;
+		background:#ededed;
+		border-radius:5px;
+		border:1px solid #ededed;
+		overflow:hidden;
+		}
+		.category_card_2 {
+		width:100%;
+		margin-bottom:10px;
+		height:130px;
+		background:#ededed;
+		border-radius:5px;
+		border:1px solid #ededed;
+		overflow:hidden;
+		}
+		.category_card_3 {
+		width:100%;
+		margin-bottom:10px;
+		
+	
+		background:#fff;
+		border-radius:5px;
+		overflow:hidden;
+		}
+		.mytitle{
+   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+			.panel-header {
+				align-items: center;
+				background:#fff;
+				box-sizing: border-box;
+				display: flex;
+				flex-direction: column;
+				height: 125px;
+				justify-content: center;
+				padding: 16px;
+				text-align: center;
+				width: 100%;
+				border-bottom:1px solid #ccc;
+			}
+			
+			.preview_pic_holder {
+  position: relative;
+  border-radius: 50%;
+  width: 85px;
+  height: 85px;
+  overflow: hidden;
+  border:1px solid #cfcfcf;
+ 
+}
+		.pic-holder {
+  text-align: center;
+  position: relative;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border:1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pic-holder .user_avatar {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+}
+		</style>
+
+	</head>
+
+	<body id="app">
+
+		<div class="statusbar"></div>
+
+	
+
+		<div class="panel panel-left panel-cover">
+		
+			<div class="list no-chevron no-hairlines no-hairlines-between">
+				<ul>
+				
+					<li>
+						<a href="/products" class="item-link panel-close">
+							<div class="item-content">
+								<div class="item-media">
+									<i class="fa-stack">
+										<span class="fas fa-circle fa-stack-2x color-gray-6 md-only"></span>
+										<span class="fas fa-search fa-stack-1x fa-inverse"></span>
+									</i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title" >Search Products</div>
+								</div>
+							</div>
+						</a>
+					</li>
+					
+					<li>
+						<a href="/categories" class="item-link panel-close">
+							<div class="item-content">
+								<div class="item-media">
+									<i class="fa-stack">
+										<span class="fas fa-circle fa-stack-2x color-gray-6 md-only"></span>
+										<span class="fas fa-clone fa-stack-1x fa-inverse"></span>
+									</i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title" >Shop by Categories</div>
+								</div>
+							</div>
+						</a>
+					</li>
+					<hr>
+					<li class="lock hidden">
+						<a href="/orders" class="item-link panel-close">
+							<div class="item-content">
+								<div class="item-media">
+									<i class="fa-stack">
+										<span class="fas fa-circle fa-stack-2x color-blue-6 md-only"></span>
+										<span class="fas fa-shopping-cart fa-stack-1x fa-inverse"></span>
+									</i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title" >My Orders</div>
+								</div>
+							</div>
+						</a>
+					</li>
+					
+					<li class="lock hidden">
+						<a href="/profile" class="item-link panel-close">
+							<div class="item-content">
+								<div class="item-media">
+									<i class="fa-stack">
+										<span class="fas fa-circle fa-stack-2x color-blue-6 md-only"></span>
+										<span class="fas fa-user fa-stack-1x fa-inverse"></span>
+									</i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title" >My Profile</div>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li class="lock hidden">
+						<a href="/pres" class="item-link panel-close">
+							<div class="item-content">
+								<div class="item-media">
+									<i class="fa-stack">
+										<span class="fas fa-circle fa-stack-2x color-blue-6 md-only"></span>
+										<span class="fas fa-edit (alias) fa-stack-1x fa-inverse"></span>
+									</i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title" >My Prescriptions</div>
+								</div>
+							</div>
+						</a>
+					</li>	
+					
+					<li class="locked hidden">
+						<a href="/register" class="item-link panel-close">
+							<div class="item-content">
+								<div class="item-media">
+									<i class="fa-stack">
+										<span class="fas fa-circle fa-stack-2x color-blue-6 md-only"></span>
+										<span class="fas fa-map-marker fa-stack-1x fa-inverse"></span>
+									</i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title" >Register</div>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li class="locked hidden">
+						<a href="/login" class="item-link panel-close">
+							<div class="item-content">
+								<div class="item-media">
+									<i class="fa-stack">
+										<span class="fas fa-circle fa-stack-2x color-blue-6 md-only"></span>
+										<span class="fas fa-map-marker fa-stack-1x fa-inverse"></span>
+									</i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title" >Sign in</div>
+								</div>
+							</div>
+						</a>
+					</li>
+					<hr>
+					
+					<li>
+						<a href="/contacts" class="item-link panel-close">
+							<div class="item-content">
+								<div class="item-media">
+									<i class="fa-stack">
+										<span class="fas fa-square fa-stack-2x color-red-4 ios-only"></span>
+										<span class="fas fa-circle fa-stack-2x color-red-4 md-only"></span>
+										<span class="fas fa-phone fa-stack-1x fa-inverse"></span>
+									</i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title" >Contacts</div>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+				<div align="center" class="lock hidden" >
+			
+				<div class="shadow" style="padding:5px; font-size:12px; width:75%;margin-top:10px;border-radius:10px;">
+				<div style="font-size:50px;"><a href="/avatar" class="panel-close"><img  class="user-avatar" style="width:70px;height:70px;border-radius:100%;" src="assets/custom/img/default.jpg"></a></div>
+				
+				<div class="user"></div>
+				<div class="user-email"></div>
+				<br>
+				<a class="button button-fill button-small color-red" style="width:50%;" onclick="sign_out()" href="javascript:;">Sign out</a>
+				<br>
+				</div>
+				</div>
+				<div align="center" style="font-size:12px;color:#666;">
+				Pharmacy: <span class="home_title"></span>
+				</div>
+			</div>
+		</div>
+
+    <!-- Begin: Hamburger Navigation -->
+		<div class="views ios-edges">
+		  <div class="view view-main"></div>
+    </div>
+    <!-- End: Hamburger Navigation -->
+
+    
+		<script src="cordova.js"></script>
+
+		<script src="assets/vendor/framework7/js/framework7.min.js"></script>
+		<script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+		<script src="assets/vendor/lazyload/lazyload.min.js"></script>
+
+		<script src="assets/vendor/i18next/i18next.min.js"></script>
+		<script src="assets/vendor/i18next/i18nextXHRBackend.min.js"></script>
+		<script src="assets/vendor/i18next/loc-i18next.min.js"></script>
+	    <script src="assets/custom/js/croppie.js"></script>
+		<script src="assets/vendor/anime/anime.min.js"></script>
+		<script src="assets/vendor/framework7-plugins/keypad/framework7.keypad.min.js"></script>
+		<script src="assets/vendor/jquery-validation/jquery.validate.min.js"></script>
+		<script src="assets/vendor/jquery-validation/additional-methods.min.js"></script>
+		<script src="assets/vendor/timedropper/timedropper.min.js"></script>
+		<script src="assets/vendor/nectar/nectar.js"></script>
+		<script src="assets/custom/js/config.js"></script>
+		<script src="assets/custom/js/routes.js"></script>
+		<script src="assets/custom/js/init.js"></script>
+		<script src="assets/custom/js/custom.js"></script>
+
+		<script>
+			$(document).on("change", ".uploadProfileInput", function () {
+  var triggerInput = this;
+  var currentImg = $(this).closest(".pic-holder").find(".user-avatar").attr("src");
+  var holder = $(this).closest(".pic-holder");
+  var wrapper = $(this).closest(".profile-pic-wrapper");
+  $(wrapper).find('[role="alert"]').remove();
+  triggerInput.blur();
+  var files = !!this.files ? this.files : [];
+  if (!files.length || !window.FileReader) {
+    return;
+  }
+  if (/^image/.test(files[0].type)) {
+    // only image file
+    var reader = new FileReader(); // instance of the FileReader
+    reader.readAsDataURL(files[0]); // read the local file
+
+    reader.onloadend = function () {
+	app.preloader.show();
+      $(holder).addClass("uploadInProgress");
+      $(holder).find(".user-avatar").attr("src", this.result);
+      $(holder).append(
+        '<div class="upload-loader"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div>'
+      );
+	 var user_email=localStorage.user_phamarcy_session;
+	  
+	  $.ajax({
+        url:main_url+"uploads/avatars/upload.php?email="+user_email,
+        type: "POST",
+        data:{"image": this.result},
+		beforeSend: function(){  },
+        success:function(data)
+        {
+		app.preloader.hide();
+		 $(holder).removeClass("uploadInProgress");
+        $(holder).find(".upload-loader").remove();
+		 $(triggerInput).val("");
+		if(data==1){
+	$(holder).find(".user-avatar").attr("src", currentImg);
+          $(wrapper).append(
+            '<div class="snackbar show" role="alert"><i class="fa fa-times-circle text-danger"></i> There is an error while uploading! Please try again later.</div>'
+          );
+
+          // Clear input after upload
+          $(triggerInput).val("");
+		} else {
+		$(wrapper).append(
+            '<div class="snackbar show" role="alert"><i class="fa fa-check-circle text-success"></i> Profile image updated successfully</div>'
+          );
+			
+		}
+		
+		
+        
+        }
+      });
+
+     
+    };
+  } else {
+    $(wrapper).append(
+      '<div class="alert alert-danger d-inline-block p-2 small" role="alert">Please choose the valid image.</div>'
+    );
+    setTimeout(() => {
+      $(wrapper).find('role="alert"').remove();
+    }, 3000);
+  }
+});
+
+
+			(function() {
+				app.init();
+			})();
+		</script>
+		<!-- End: Scripts -->
+
+	</body>
+
+</html>

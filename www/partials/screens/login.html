@@ -1,0 +1,199 @@
+<template>
+	<div class="page no-navbar no-toolbar no-swipeback">
+
+		<div class="page-content">
+
+			<div class="block text-align-center" style="margin-top:80px;">
+				<img class="theme-light-only" src="assets/custom/img/logo.png" width="128" alt="" />
+			</div>
+
+			<form name="login" action="#" method="POST" enctype="multipart/form-data">
+				<div class="list no-hairlines no-hairlines-between no-margin-bottom">
+					<ul>
+						<li>
+							<div class="item-content item-input item-input-with-info">
+								<div class="item-media">
+									<i class="icon f7-icons ios-only">email</i>
+									<i class="icon material-icons md-only">mail</i>
+								</div>
+								<div class="item-inner">
+									<div class="item-input-wrap">
+										<input type="email" name="email" id="email" placeholder="Email" autocomplete='true'  required />
+										<div class="item-input-info input-error-message"></div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content item-input item-input-with-info">
+								<div class="item-media">
+									<i class="icon f7-icons ios-only">lock</i>
+									<i class="icon material-icons md-only">lock</i>
+								</div>
+								<div class="item-inner">
+									<div class="item-input-wrap">
+										<input type="password" name="password" id="password" placeholder="Password" required autocomplete='true'  data-toggle="show-hide-password" />
+										<div class="item-input-info input-error-message"></div>
+									</div>
+								</div>
+								<div class="item-media">
+									<a href="#" @click="showHidePassword">
+										{{#if isPasswordVisible}}
+										<i class="icon f7-icons ios-only">eye_off</i>
+										<i class="icon material-icons md-only">visibility_off</i>
+										{{else}}
+										<i class="icon f7-icons ios-only">eye</i>
+										<i class="icon material-icons md-only">visibility</i>
+										{{/if}}
+									</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="block no-margin-top text-align-right">
+						<!-- <a href="/screens/forgot-password" data-i18n="forgot-password">Forgot Password?</a> -->
+					</div>
+					<div class="block text-align-center">
+						<button type="submit" class="button button-big button-fill" id="login_btn" data-i18n="login">Log In</button>
+						<p>Don't have an account? <a href="/register" data-i18n="signup">Sign Up</a></p>
+						
+						<p class="text-align-center"> 
+						<a href="/info" data-i18n="Privacy Policy">Privacy Policy </a></p>
+					</div>
+				</div>
+			</form>
+
+		</div>
+
+	</div>
+</template>
+
+<script>
+
+
+	return {
+		data: function() {
+			return {
+				formValidator: null,
+				isPasswordVisible: false
+			}
+		},
+		methods: {
+		
+		
+			showHidePassword: function(event) {
+				var self = this;
+				var input = self.$('input[data-toggle=show-hide-password]');
+				if (input.attr('type') == 'password') {
+					input.attr('type', 'text');
+					self.$setState({
+						isPasswordVisible: true
+					});
+				}
+				else {
+					input.attr('type', 'password');
+					self.$setState({
+						isPasswordVisible: false
+					});
+				}
+			},
+			showInfiniteProgressDialog: function() {
+				var self = this;
+				
+				app.dialog.progress('Preparing your account');
+				setTimeout(function() {
+					app.dialog.close();
+					//app.views.current.router.navigate('/home');
+				}, 10000);
+			},
+			
+			showError: function(error) {
+				var self = this;
+				app.toast.show({
+					text: error,
+					cssClass: 'bg-color-red'
+				});
+			},	
+			showWarning: function(error) {
+				var self = this;
+				app.toast.show({
+					text: error,
+					cssClass: 'bg-color-orange'
+				});
+			},
+			initializeFormValidator: function() {
+				var self = this;
+				self.formValidator = jQuery('form[name=login]').validate({
+					rules: {
+						email: {
+							required: true,
+        			email:true
+      			},
+      			password: {
+							required: true
+						}
+					},
+    			messages: {
+						email: {
+							required: 'Please enter email address.',
+        			email: 'Please enter a valid email address.'
+      			},
+						password: {
+							required: 'Please enter password.'
+      			}
+					},
+					submitHandler: function(form) {
+						self.submitForm(form);
+					}
+				});
+			},
+			submitForm: function(form) {
+				var self = this;
+var email=$("#email").val();
+var password=$("#password").val();
+
+$('#login_btn').html('<i class="fa fa-spin fa-spinner"></i>');
+
+var xhr = $.get( main_url+"profile/auth.php?email="+email+"&password="+password+"&login=", function(data) {
+ $('#login_btn').html('Log In');
+
+	  
+	  if(data==4){
+ localStorage.login_user_phamarcy="true";
+ localStorage.user_phamarcy_session=email;
+
+	get_last_page();
+	 $('#login_btn').html('Log In');
+ } else if(data==3){
+		self.showError('Account not active, please contact our office');
+					  }
+  else if(data==2){
+  self.showError('Wrong password');
+  } else if(data==1){
+  self.showError('Account not found, Please register');
+  } else {
+  $('#login_btn').html('Log In');
+ self.showError(data);	
+ 
+ }
+
+
+})
+  .fail(function() {
+    $('#login_btn').html('Log In');
+ self.showError('Check your internet connection');
+  });
+		
+			}
+		},
+		on: {
+			pageInit: function() {
+				var self = this;
+				self.initializeFormValidator();
+				check_login();
+				//dropDatabase();
+				
+			}
+		}
+	}
+</script>
