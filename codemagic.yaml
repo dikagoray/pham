@@ -2,7 +2,7 @@ workflows:
   ios-testing:
     name: iOS Build and Test
     environment:
-      xcode: 15.1
+      xcode: 15.0
       cocoapods: default
     scripts:
       - name: Install dependencies
@@ -15,8 +15,10 @@ workflows:
       - name: Build for iOS
         script: |
           cordova build ios
-        artifacts:
+      - name: Debug build directory
+        script: |
+          echo "iOS Build directory contents:"
+          ls -R platforms/ios/build/
+    artifacts:
       - path: platforms/ios/build/emulator/*.app
         type: folder
-
-   
