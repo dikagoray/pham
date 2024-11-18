@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="app.iam.classic" version="1.0.0" android-versionCode="10001"
+ xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Pharmacy Direct</name>
+   
+<description>Iam is demo</description>
+	<author email="dikagoray@gmail.com">Ray Dikago</author>
+  <content src="index.html" />
+<access origin="content:///*" />
+<!-- Don't block any requests -->
+<access origin="*" />
+ <!-- Begin: URLs Whitelist -->
+	
+	<allow-navigation href="*" />
+	<allow-intent href="*" />
+<allow-intent href="http://*/*" />
+<allow-intent href="https://*/*" />
+ <allow-intent href="tel:*" />
+<allow-intent href="sms:*" />
+ <allow-intent href="mailto:*" />
+ <allow-intent href="geo:*" />
+
+	<allow-intent href="market:*" />
+	<!-- End: Preferences -->
+	<!-- Launch Icons -->
+	<platform name="android">
+	<preference name="hostname" value="localhost" />
+	<preference name="AndroidLaunchMode" value="singleTop"/>
+
+	 <preference name="SplashScreenDelay" value="5000" />
+	<preference name="ShowSplashScreenSpinner" value="false"/>
+	<preference name="SplashMaintainAspectRatio" value="true" />
+		<preference name="SplashShowOnlyFirstTime" value="false" />
+	<preference name="AndroidInsecureFileModeEnabled" value="true" />
+		<icon src="res/android/launch-icons/mdpi.png" density="mdpi" />
+		<icon src="res/android/launch-icons/hdpi.png" density="hdpi" />
+		<icon src="res/android/launch-icons/xhdpi.png" density="xhdpi" />
+		<icon src="res/android/launch-icons/xxhdpi.png" density="xxhdpi" />
+
+		  <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/android/launch-icons/xxhdpi.png" />
+		
+		
+		 
+	</platform>
+	
+   
+	
+</widget>
